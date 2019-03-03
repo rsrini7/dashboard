@@ -1,0 +1,61 @@
+{
+	"data": [
+		{
+			"category": "BBG",
+			"destination": "crd",
+			"filename": "bbg-1.csv",
+			"filesize": 1828,
+			"id": 1,
+			"initialtime": 4151543,
+			"numoflines": 3000,
+			"remarks": "No Remarks",
+			"source": "idh",
+			"status": "success",
+			"theme": "Analytics",
+			"updatetime": 325325
+		},
+		{
+			"category": "AB",
+			"destination": "crd",
+			"filename": "ana-ab-1.csv",
+			"filesize": 1811,
+			"id": 4,
+			"initialtime": 354325,
+			"numoflines": 2200,
+			"remarks": "No Remarks",
+			"source": "idh",
+			"status": "success",
+			"theme": "Analytics",
+			"updatetime": 354325
+		},
+		{
+			"category": "YB",
+			"destination": "crd",
+			"filename": "ibor-yb-1.csv",
+			"filesize": 121,
+			"id": 2,
+			"initialtime": 32554,
+			"numoflines": 300,
+			"remarks": "LFG connection failed.",
+			"source": "idh",
+			"status": "failed",
+			"theme": "IBOR",
+			"updatetime": 353254
+		},
+		{
+			"category": "abc",
+			"destination": "gx",
+			"filename": "abc-2.csv",
+			"filesize": 1123,
+			"id": 3,
+			"initialtime": 41412,
+			"numoflines": 1000,
+			"remarks": "No Remarks",
+			"source": "idh",
+			"status": "inprogress",
+			"theme": "GX",
+			"updatetime": 35354
+		}
+	],
+	"version": "10.1.1"
+}

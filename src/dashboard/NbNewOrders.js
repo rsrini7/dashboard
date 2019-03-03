@@ -1,7 +1,7 @@
 import React from 'react';
 import compose from 'recompose/compose';
 import Card from '@material-ui/core/Card';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import ShoppingCartIcon from '@material-ui/icons/CheckCircle';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { translate } from 'react-admin';
@@ -24,10 +24,10 @@ const styles = {
 
 const NbNewOrders = ({ value, translate, classes }) => (
     <div className={classes.main}>
-        <CardIcon Icon={ShoppingCartIcon} bgColor="#ff9800" />
+        <CardIcon Icon={ShoppingCartIcon} bgColor="#4caf50" />
         <Card className={classes.card}>
             <Typography className={classes.title} color="textSecondary">
-                {translate('pos.dashboard.new_orders')}
+                {translate('pos.dashboard.transfer_complete')}
             </Typography>
             <Typography variant="headline" component="h2">
                 {value}

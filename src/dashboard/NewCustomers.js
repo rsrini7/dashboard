@@ -7,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import CustomerIcon from '@material-ui/icons/PersonAdd';
+import CustomerIcon from '@material-ui/icons/HighlightOff';
 import Divider from '@material-ui/core/Divider';
 import { Link } from 'react-router-dom';
 import { translate } from 'react-admin';
@@ -42,10 +42,10 @@ const styles = theme => ({
 
 const NewCustomers = ({ visitors = [], nb, translate, classes }) => (
     <div className={classes.main}>
-        <CardIcon Icon={CustomerIcon} bgColor="#4caf50" />
+        <CardIcon Icon={CustomerIcon} bgColor="#f44336" />
         <Card className={classes.card}>
             <Typography className={classes.title} color="textSecondary">
-                {translate('pos.dashboard.new_customers')}
+                {translate('pos.dashboard.transfer_failed')}
             </Typography>
             <Typography
                 variant="headline"

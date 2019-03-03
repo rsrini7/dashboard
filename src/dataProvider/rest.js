@@ -8,12 +8,10 @@ const httpClient = (url, options = {}) => {
     }
     // add your own headers here
     options.headers.set('Access-Control-Expose-Headers', 'Content-Range');
-    
-
     return fetchUtils.fetchJson(url, options);
 }
 
-const restProvider = simpleRestProvider('http://localhost:8080/data',httpClient);
+const restProvider = simpleRestProvider('http://localhost:3007',httpClient);
 export default (type, resource, params) =>
     new Promise(resolve =>
         setTimeout(() => resolve(restProvider(type, resource, params)), 500)

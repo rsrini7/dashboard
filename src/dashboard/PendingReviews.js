@@ -7,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import CommentIcon from '@material-ui/icons/Comment';
+import CommentIcon from '@material-ui/icons/DonutLarge';
 import Divider from '@material-ui/core/Divider';
 import { Link } from 'react-router-dom';
 import { translate } from 'react-admin';
@@ -60,10 +60,10 @@ const PendingReviews = ({
     classes,
 }) => (
     <div className={classes.main}>
-        <CardIcon Icon={CommentIcon} bgColor="#f44336" />
+        <CardIcon Icon={CommentIcon} bgColor="#ff9800" />
         <Card className={classes.card}>
             <Typography className={classes.title} color="textSecondary">
-                {translate('pos.dashboard.pending_reviews')}
+                {translate('pos.dashboard.transfer_inprogress')}
             </Typography>
             <Typography
                 variant="headline"

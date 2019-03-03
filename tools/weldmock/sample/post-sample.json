@@ -1,0 +1,19 @@
+{
+  "author": {
+    "name": "seray",
+    "surname": "uzgur"
+  },
+  "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
+  "id": 1,
+  "tags": [
+    {
+      "id": 1,
+      "name": "tech"
+    },
+    {
+      "id": 2,
+      "name": "web"
+    }
+  ],
+  "title": "Rust Rocks!"
+}

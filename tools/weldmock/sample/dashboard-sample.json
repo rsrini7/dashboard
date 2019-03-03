@@ -1,0 +1,14 @@
+{
+	"theme": "Analytics",
+	"id": 1,
+	"category": "BBG",
+	"filename": "bbg-1.csv",
+	"filesize": 1828,
+	"numoflines": 3000,
+	"source": "idh",
+	"destination": "crd",
+	"initialtime": "2017-07-06 16:31:38",
+	"updatetime": "2017-07-06 16:35:38",
+	"status": "success",
+	"remarks": "No Remarks"
+}

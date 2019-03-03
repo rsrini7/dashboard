@@ -25,20 +25,21 @@ class Dashboard extends Component {
 
         dataProviderFactory(process.env.REACT_APP_DATA_PROVIDER).then(
             dataProvider => {
-                dataProvider(GET_LIST, 'commands', {
+                dataProvider(GET_LIST, 'data', {
                     filter: { date_gte: aMonthAgo.toISOString() },
                     sort: { field: 'date', order: 'DESC' },
                     pagination: { page: 1, perPage: 50 },
                 })
                     .then(response =>
-                        response.data
-                            .filter(order => order.status !== 'cancelled')
+                        
+                        response.then(console.log)
+                            //.filter(order => order.status !== 'cancelled')
                             .reduce(
                                 (stats, order) => {
-                                    if (order.status !== 'cancelled') {
-                                        stats.revenue += order.total;
+                                    
+                                        stats.revenue += 1;
                                         stats.nbNewOrders++;
-                                    }
+                                    
                                     if (order.status === 'ordered') {
                                         stats.pendingOrders.push(order);
                                     }
@@ -83,7 +84,7 @@ class Dashboard extends Component {
                         this.setState({ pendingOrdersCustomers: customers })
                     );
 
-                dataProvider(GET_LIST, 'reviews', {
+                dataProvider(GET_LIST, 'data', {
                     filter: { status: 'pending' },
                     sort: { field: 'date', order: 'DESC' },
                     pagination: { page: 1, perPage: 100 },
@@ -115,7 +116,7 @@ class Dashboard extends Component {
                         this.setState({ pendingReviewsCustomers: customers })
                     );
 
-                dataProvider(GET_LIST, 'customers', {
+                dataProvider(GET_LIST, 'data', {
                     filter: {
                         has_ordered: true,
                         first_seen_gte: aMonthAgo.toISOString(),

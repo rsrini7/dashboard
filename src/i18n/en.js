@@ -13,10 +13,15 @@ export default {
         },
         dashboard: {
             monthly_revenue: 'Monthly Revenue',
+            transfer_complete:'Completed',
+            transfer_inprogress:'In-Progress',
+            transfer_failed:'Failed',
+            transfer_total:'Total',
             new_orders: 'New Orders',
             pending_reviews: 'Pending Reviews',
             new_customers: 'New Customers',
             pending_orders: 'Pending Orders',
+            pending_transfers: 'Pending Transfers',
             order: {
                 items:
                     'by %{customer_name}, one item |||| by %{customer_name}, %{nb_items} items',
