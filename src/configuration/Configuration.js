@@ -22,7 +22,7 @@ const Configuration = ({
     translate,
 }) => (
     <Card>
-        <Title title={translate('pos.configuration')} />
+        {/* <Title title={translate('pos.configuration')} /> */}
         <CardContent>
             <div className={classes.label}>{translate('pos.theme.name')}</div>
             <Button

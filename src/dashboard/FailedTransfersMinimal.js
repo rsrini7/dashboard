@@ -6,7 +6,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import CommentIcon from '@material-ui/icons/DonutLarge';
+import CustomerIcon from '@material-ui/icons/HighlightOff';
 import Divider from '@material-ui/core/Divider';
 import { Link } from 'react-router-dom';
 import { translate } from 'react-admin';
@@ -16,10 +16,9 @@ import CardIcon from './CardIcon';
 const styles = theme => ({
     main: {
         flex: '1',
-        marginRight: '1em',
+        marginLeft: '1em',
         marginTop: 20,
     },
-    titleLink: { textDecoration: 'none', color: 'inherit' },
     card: {
         padding: '16px 0',
         overflow: 'inherit',
@@ -41,42 +40,30 @@ const styles = theme => ({
     },
 });
 
-const location = {
-    pathname: 'data',
-    query: { filter: JSON.stringify({ status: 'inprogress' }) },
-};
-
-const PendingTransfers = ({
-    transfers = [],
-    nb,
-    translate,
-    classes,
-}) => (
+const FailedTransfers = ({ transfers = [], nb, translate, classes }) => (
     <div className={classes.main}>
-        <CardIcon Icon={CommentIcon} bgColor="#ff9800" />
+        <CardIcon Icon={CustomerIcon} bgColor="#f44336" />
         <Card className={classes.card}>
             <Typography className={classes.title} color="textSecondary">
-                {translate('pos.dashboard.transfer_inprogress')}
+                {translate('pos.dashboard.transfer_failed')}
             </Typography>
             <Typography
                 variant="headline"
                 component="h2"
                 className={classes.value}
             >
-                <Link to={location} className={classes.titleLink}>
-                    {nb}
-                </Link>
+                {nb}
             </Typography>
             <Divider />
             <List>
                 {transfers.map(record => (
                     <ListItem
-                        key={record.id}
                         button
-                        component={Link}
                         to={`/data/${record.id}`}
+                        component={Link}
+                        key={record.id}
                     >
-                       <ListItemText
+                        <ListItemText
                             primary={`${record.theme} ${record.category}`}
                             secondary={`${record.filename}`}
                             className={classes.listItemText}
@@ -94,4 +81,4 @@ const enhance = compose(
     translate
 );
 
-export default enhance(PendingTransfers);
+export default enhance(FailedTransfers);

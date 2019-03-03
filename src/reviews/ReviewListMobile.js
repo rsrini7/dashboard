@@ -13,7 +13,7 @@ import {
     TextField,
 } from 'react-admin';
 
-import AvatarField from '../visitors/AvatarField';
+// import AvatarField from '../visitors/AvatarField';
 
 const styles = {
     root: {
@@ -54,7 +54,7 @@ const ReviewMobileList = ({
                                 basePath={basePath}
                                 linkType={false}
                             >
-                                <AvatarField size={40} />
+                                {/* <AvatarField size={40} /> */}
                             </ReferenceField>
                         </ListItemAvatar>
                         <ListItemText

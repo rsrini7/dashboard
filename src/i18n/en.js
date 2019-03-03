@@ -22,6 +22,13 @@ export default {
             new_customers: 'New Customers',
             pending_orders: 'Pending Orders',
             pending_transfers: 'Pending Transfers',
+            failed_transfers: 'Failed Transfers',
+            transfer:{
+                first_line:
+                    'Theme: %{theme}, Category: %{category}, FileName: %{filename}',
+                second_line:
+                    'Source: %{source}, Dest: %{destination}, Remarks: %{remarks}',
+            },
             order: {
                 items:
                     'by %{customer_name}, one item |||| by %{customer_name}, %{nb_items} items',

@@ -4,8 +4,8 @@ import { GET_LIST, GET_MANY, Responsive } from 'react-admin';
 import TotalTransfers from './TotalTransfers';
 import CompletedTransfers from './CompletedTransfers';
 import PendingTransfersMinimal from './PendingTransfersMinimal';
+import FailedTransfersMinimal from './FailedTransfersMinimal';
 import FailedTransfers from './FailedTransfers';
-import PendingTransfers from './PendingTransfers';
 
 import dataProviderFactory from '../dataProvider';
 
@@ -92,7 +92,7 @@ class Dashboard extends Component {
                                 <CompletedTransfers value={nbCompleted} />
                             </div>
                             <div style={styles.singleCol}>
-                                <PendingTransfers
+                                <FailedTransfers
                                     transfers={pendingTransfers}
                                 />
                             </div>
@@ -106,8 +106,8 @@ class Dashboard extends Component {
                             <CompletedTransfers value={nbCompleted} />
                         </div>
                         <div style={styles.singleCol}>
-                            <PendingTransfers
-                                transfers={pendingTransfers}
+                            <FailedTransfers
+                                transfers={failedTransfers}
                             />
                         </div>
                     </div>
@@ -120,8 +120,8 @@ class Dashboard extends Component {
                                 <CompletedTransfers value={nbCompleted} />
                             </div>
                             <div style={styles.singleCol}>
-                                <PendingTransfers
-                                    transfers={pendingTransfers}
+                                <FailedTransfers
+                                    transfers={failedTransfers}
                                  />
                             </div>
                         </div>
@@ -129,11 +129,11 @@ class Dashboard extends Component {
                             <div style={styles.flex}>
                                 <PendingTransfersMinimal
                                     nb={nbInprogress}
-                                    reviews={pendingTransfers}
+                                    transfers={pendingTransfers}
                                  />
-                                <FailedTransfers
+                                <FailedTransfersMinimal
                                     nb={nbFailed}
-                                    visitors={failedTransfers}
+                                    transfers={failedTransfers}
                                 />
                             </div>
                         </div>
