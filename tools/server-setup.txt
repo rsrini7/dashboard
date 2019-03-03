@@ -1,0 +1,10 @@
+start weldmock with db.json for CURD operations
+    it starts by default port 8080
+
+start http-proxy-set-header
+    it starts by default port 8000
+    and it proxy to port 8080 with custom response headers
+    (AVOID cors problems)
+
+anyone wants to use CRUD with CORS enabled :
+    point to http://localhost:8000
