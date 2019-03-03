@@ -83,17 +83,8 @@ const PendingReviews = ({
                         component={Link}
                         to={`/reviews/${record.id}`}
                     >
-                        {customers[record.customer_id] ? (
-                            <Avatar
-                                src={`${
-                                    customers[record.customer_id].avatar
-                                }?size=32x32`}
-                                className={classes.avatar}
-                            />
-                        ) : (
-                            <Avatar />
-                        )}
-
+                 
+                        <Avatar />
                         <ListItemText
                             primary={<StarRatingField record={record} />}
                             secondary={record.comment}

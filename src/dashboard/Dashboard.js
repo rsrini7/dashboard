@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { GET_LIST, GET_MANY, Responsive } from 'react-admin';
 
-import MonthlyRevenue from './MonthlyRevenue';
-import NbNewOrders from './NbNewOrders';
-import PendingOrders from './PendingOrders';
-import PendingReviews from './PendingReviews';
-import NewCustomers from './NewCustomers';
+import TotalTransfers from './TotalTransfers';
+import CompletedTransfers from './CompletedTransfers';
+import PendingTransfersMinimal from './PendingTransfersMinimal';
+import FailedTransfers from './FailedTransfers';
+import PendingTransfers from './PendingTransfers';
+
 import dataProviderFactory from '../dataProvider';
 
 const styles = {
@@ -31,142 +32,55 @@ class Dashboard extends Component {
                     pagination: { page: 1, perPage: 50 },
                 })
                     .then(response =>
-                        
                            response.data.reduce(
-                                    (stats, order) => {
-                                        
-                                            stats.revenue++;
-                                            stats.nbNewOrders++;
-                                        
-                                        // if (order.status === 'ordered') {
-                                        //     stats.pendingOrders.push(order);
-                                        // }
-                                        //console.log(stats)
+                                    (stats, transferData) => {
+                                            stats.nbTotal++;
+                                            
+                                            if (transferData.status === 'success') {
+                                                stats.nbCompleted++;
+                                            }
+                                            if (transferData.status === 'inprogress') {
+                                                stats.nbInprogress++;
+                                                stats.pendingTransfers.push(transferData);
+                                            }
+                                            if (transferData.status.indexOf('failed') > -1) {
+                                                stats.nbFailed++;
+                                                stats.failedTransfers.push(transferData);
+                                            }
                                         return stats;
                                     },
                                     {
-                                        revenue: 0,
-                                        nbNewOrders: 0
+                                        nbTotal: 0,
+                                        nbCompleted: 0,
+                                        nbInprogress: 0,
+                                        nbFailed: 0,
+                                        pendingTransfers: [],
+                                        failedTransfers: []
+
                                     })
                                     
-                            // .filter(order => order.status !== 'cancelled')
-                            // .reduce(
-                            //     (stats, order) => {
-                                    
-                            //             stats.revenue += 1;
-                            //             stats.nbNewOrders++;
-                                    
-                            //         if (order.status === 'ordered') {
-                            //             stats.pendingOrders.push(order);
-                            //         }
-                            //         return stats;
-                            //     },
-                            //     {
-                            //         revenue: 0,
-                            //         nbNewOrders: 0,
-                            //         pendingOrders: [],
-                            //     }
-                            // )
-                    ).then(({revenue,nbNewOrders}) => {
+                    ).then(({nbTotal,nbCompleted,nbInprogress,nbFailed,pendingTransfers,failedTransfers}) => {
                         this.setState({
-                            revenue,
-                            nbNewOrders
+                            nbTotal,
+                            nbCompleted,
+                            nbInprogress,
+                            nbFailed,
+                            pendingTransfers,
+                            failedTransfers
                         });
                     })
-                    // .then(({ revenue, nbNewOrders, pendingOrders }) => {
-                    //     this.setState({
-                    //         revenue: revenue.toLocaleString(undefined, {
-                    //             style: 'currency',
-                    //             currency: 'USD',
-                    //             minimumFractionDigits: 0,
-                    //             maximumFractionDigits: 0,
-                    //         }),
-                    //         nbNewOrders,
-                    //         pendingOrders,
-                    //     });
-                    //     return pendingOrders;
-                    // })
-                    // .then(pendingOrders =>
-                    //     pendingOrders.map(order => order.customer_id)
-                    // )
-                    // .then(customerIds =>
-                    //     dataProvider(GET_MANY, 'customers', {
-                    //         ids: customerIds,
-                    //     })
-                    // )
-                    // .then(response => response.data)
-                    // .then(customers =>
-                    //     customers.reduce((prev, customer) => {
-                    //         prev[customer.id] = customer; // eslint-disable-line no-param-reassign
-                    //         return prev;
-                    //     }, {})
-                    // )
-                    // .then(customers =>
-                    //     this.setState({ pendingOrdersCustomers: customers })
-                    // );
-
-                // dataProvider(GET_LIST, 'data', {
-                //     filter: { status: 'pending' },
-                //     sort: { field: 'date', order: 'DESC' },
-                //     pagination: { page: 1, perPage: 100 },
-                // })
-                //     .then(response => response.data)
-                //     .then(reviews => {
-                //         const nbPendingReviews = reviews.reduce(nb => ++nb, 0);
-                //         const pendingReviews = reviews.slice(
-                //             0,
-                //             Math.min(10, reviews.length)
-                //         );
-                //         this.setState({ pendingReviews, nbPendingReviews });
-                //         return pendingReviews;
-                //     })
-                //     .then(reviews => reviews.map(review => review.customer_id))
-                //     .then(customerIds =>
-                //         dataProvider(GET_MANY, 'customers', {
-                //             ids: customerIds,
-                //         })
-                //     )
-                //     .then(response => response.data)
-                //     .then(customers =>
-                //         customers.reduce((prev, customer) => {
-                //             prev[customer.id] = customer; // eslint-disable-line no-param-reassign
-                //             return prev;
-                //         }, {})
-                //     )
-                //     .then(customers =>
-                //         this.setState({ pendingReviewsCustomers: customers })
-                //     );
-
-                // dataProvider(GET_LIST, 'data', {
-                //     filter: {
-                //         has_ordered: true,
-                //         first_seen_gte: aMonthAgo.toISOString(),
-                //     },
-                //     sort: { field: 'first_seen', order: 'DESC' },
-                //     pagination: { page: 1, perPage: 100 },
-                // })
-                //     .then(response => response.data)
-                //     .then(newCustomers => {
-                //         this.setState({ newCustomers });
-                //         this.setState({
-                //             nbNewCustomers: newCustomers.reduce(nb => ++nb, 0),
-                //         });
-                //     });
             }
         );
     }
 
     render() {
         const {
-            nbNewCustomers,
-            nbNewOrders,
-            nbPendingReviews,
-            newCustomers,
-            pendingOrders,
-            pendingOrdersCustomers,
-            pendingReviews,
-            pendingReviewsCustomers,
-            revenue,
+            nbTotal,
+            nbCompleted,
+            nbInprogress,
+            nbFailed,
+            pendingTransfers,
+            failedTransfers
         } = this.state;
         return (
             <Responsive
@@ -174,13 +88,12 @@ class Dashboard extends Component {
                     <div>
                         <div style={styles.flexColumn}>
                             <div style={styles.flex}>
-                                <MonthlyRevenue value={revenue} />
-                                <NbNewOrders value={nbNewOrders} />
+                                <TotalTransfers value={nbTotal} />
+                                <CompletedTransfers value={nbCompleted} />
                             </div>
                             <div style={styles.singleCol}>
-                                <PendingOrders
-                                    orders={pendingOrders}
-                                    customers={pendingOrdersCustomers}
+                                <PendingTransfers
+                                    transfers={pendingTransfers}
                                 />
                             </div>
                         </div>
@@ -189,13 +102,12 @@ class Dashboard extends Component {
                 small={
                     <div style={styles.flexColumn}>
                         <div style={styles.flex}>
-                            <MonthlyRevenue value={revenue} />
-                            <NbNewOrders value={nbNewOrders} />
+                            <TotalTransfers value={nbTotal} />
+                            <CompletedTransfers value={nbCompleted} />
                         </div>
                         <div style={styles.singleCol}>
-                            <PendingOrders
-                                orders={pendingOrders}
-                                customers={pendingOrdersCustomers}
+                            <PendingTransfers
+                                transfers={pendingTransfers}
                             />
                         </div>
                     </div>
@@ -204,26 +116,24 @@ class Dashboard extends Component {
                     <div style={styles.flex}>
                         <div style={styles.leftCol}>
                             <div style={styles.flex}>
-                                <MonthlyRevenue value={revenue} />
-                                <NbNewOrders value={nbNewOrders} />
+                                <TotalTransfers value={nbTotal} />
+                                <CompletedTransfers value={nbCompleted} />
                             </div>
                             <div style={styles.singleCol}>
-                                <PendingOrders
-                                    orders={pendingOrders}
-                                    customers={pendingOrdersCustomers}
-                                />
+                                <PendingTransfers
+                                    transfers={pendingTransfers}
+                                 />
                             </div>
                         </div>
                         <div style={styles.rightCol}>
                             <div style={styles.flex}>
-                                <PendingReviews
-                                    nb={nbPendingReviews}
-                                    reviews={pendingReviews}
-                                    customers={pendingReviewsCustomers}
-                                />
-                                <NewCustomers
-                                    nb={nbNewCustomers}
-                                    visitors={newCustomers}
+                                <PendingTransfersMinimal
+                                    nb={nbInprogress}
+                                    reviews={pendingTransfers}
+                                 />
+                                <FailedTransfers
+                                    nb={nbFailed}
+                                    visitors={failedTransfers}
                                 />
                             </div>
                         </div>

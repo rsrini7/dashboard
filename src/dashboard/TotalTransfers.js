@@ -22,7 +22,7 @@ const styles = theme => ({
     },
 });
 
-const MonthlyRevenue = ({ value, translate, classes }) => (
+const TotalTransfers = ({ value, translate, classes }) => (
     <div className={classes.main}>
         <CardIcon Icon={displayIcon} bgColor="#31708f" />
         <Card className={classes.card}>
@@ -41,4 +41,4 @@ const enhance = compose(
     translate
 );
 
-export default enhance(MonthlyRevenue);
+export default enhance(TotalTransfers);
