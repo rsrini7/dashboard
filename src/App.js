@@ -18,9 +18,9 @@ import invoices from './invoices';
 import categories from './categories';
 import reviews from './reviews';
 
-import jsonServerProvider from 'ra-data-json-server';
+// import jsonServerProvider from 'ra-data-json-server';
 //import dataProviderFactory from './dataProvider';
-// import { defaultDataProvider } from './dataCustomProvider';
+ import { customDataProvider } from './dataCustomProvider';
 
 const i18nProvider = locale => {
     if (locale === 'fr') {
@@ -36,13 +36,13 @@ class App extends Component {
 
     async componentWillMount() {
 
-        //const dataProvider = await defaultDataProvider;
+        const dataProvider = await customDataProvider;
 
-        const dataProvider = jsonServerProvider('http://localhost:3007');
+        //const dataProvider = jsonServerProvider('http://localhost:3007');
 
-        // const dataProvider = await dataProviderFactory(
-        //     process.env.REACT_APP_DATA_PROVIDER
-        // );
+        //  const dataProvider = await dataProviderFactory(
+        //      process.env.REACT_APP_DATA_PROVIDER
+        //  );
 
         this.setState({ dataProvider });
     }

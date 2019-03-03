@@ -32,105 +32,126 @@ class Dashboard extends Component {
                 })
                     .then(response =>
                         
-                        response.then(console.log)
-                            //.filter(order => order.status !== 'cancelled')
-                            .reduce(
-                                (stats, order) => {
+                           response.data.reduce(
+                                    (stats, order) => {
+                                        
+                                            stats.revenue++;
+                                            stats.nbNewOrders++;
+                                        
+                                        // if (order.status === 'ordered') {
+                                        //     stats.pendingOrders.push(order);
+                                        // }
+                                        //console.log(stats)
+                                        return stats;
+                                    },
+                                    {
+                                        revenue: 0,
+                                        nbNewOrders: 0
+                                    })
                                     
-                                        stats.revenue += 1;
-                                        stats.nbNewOrders++;
+                            // .filter(order => order.status !== 'cancelled')
+                            // .reduce(
+                            //     (stats, order) => {
                                     
-                                    if (order.status === 'ordered') {
-                                        stats.pendingOrders.push(order);
-                                    }
-                                    return stats;
-                                },
-                                {
-                                    revenue: 0,
-                                    nbNewOrders: 0,
-                                    pendingOrders: [],
-                                }
-                            )
-                    )
-                    .then(({ revenue, nbNewOrders, pendingOrders }) => {
+                            //             stats.revenue += 1;
+                            //             stats.nbNewOrders++;
+                                    
+                            //         if (order.status === 'ordered') {
+                            //             stats.pendingOrders.push(order);
+                            //         }
+                            //         return stats;
+                            //     },
+                            //     {
+                            //         revenue: 0,
+                            //         nbNewOrders: 0,
+                            //         pendingOrders: [],
+                            //     }
+                            // )
+                    ).then(({revenue,nbNewOrders}) => {
                         this.setState({
-                            revenue: revenue.toLocaleString(undefined, {
-                                style: 'currency',
-                                currency: 'USD',
-                                minimumFractionDigits: 0,
-                                maximumFractionDigits: 0,
-                            }),
-                            nbNewOrders,
-                            pendingOrders,
+                            revenue,
+                            nbNewOrders
                         });
-                        return pendingOrders;
                     })
-                    .then(pendingOrders =>
-                        pendingOrders.map(order => order.customer_id)
-                    )
-                    .then(customerIds =>
-                        dataProvider(GET_MANY, 'customers', {
-                            ids: customerIds,
-                        })
-                    )
-                    .then(response => response.data)
-                    .then(customers =>
-                        customers.reduce((prev, customer) => {
-                            prev[customer.id] = customer; // eslint-disable-line no-param-reassign
-                            return prev;
-                        }, {})
-                    )
-                    .then(customers =>
-                        this.setState({ pendingOrdersCustomers: customers })
-                    );
+                    // .then(({ revenue, nbNewOrders, pendingOrders }) => {
+                    //     this.setState({
+                    //         revenue: revenue.toLocaleString(undefined, {
+                    //             style: 'currency',
+                    //             currency: 'USD',
+                    //             minimumFractionDigits: 0,
+                    //             maximumFractionDigits: 0,
+                    //         }),
+                    //         nbNewOrders,
+                    //         pendingOrders,
+                    //     });
+                    //     return pendingOrders;
+                    // })
+                    // .then(pendingOrders =>
+                    //     pendingOrders.map(order => order.customer_id)
+                    // )
+                    // .then(customerIds =>
+                    //     dataProvider(GET_MANY, 'customers', {
+                    //         ids: customerIds,
+                    //     })
+                    // )
+                    // .then(response => response.data)
+                    // .then(customers =>
+                    //     customers.reduce((prev, customer) => {
+                    //         prev[customer.id] = customer; // eslint-disable-line no-param-reassign
+                    //         return prev;
+                    //     }, {})
+                    // )
+                    // .then(customers =>
+                    //     this.setState({ pendingOrdersCustomers: customers })
+                    // );
 
-                dataProvider(GET_LIST, 'data', {
-                    filter: { status: 'pending' },
-                    sort: { field: 'date', order: 'DESC' },
-                    pagination: { page: 1, perPage: 100 },
-                })
-                    .then(response => response.data)
-                    .then(reviews => {
-                        const nbPendingReviews = reviews.reduce(nb => ++nb, 0);
-                        const pendingReviews = reviews.slice(
-                            0,
-                            Math.min(10, reviews.length)
-                        );
-                        this.setState({ pendingReviews, nbPendingReviews });
-                        return pendingReviews;
-                    })
-                    .then(reviews => reviews.map(review => review.customer_id))
-                    .then(customerIds =>
-                        dataProvider(GET_MANY, 'customers', {
-                            ids: customerIds,
-                        })
-                    )
-                    .then(response => response.data)
-                    .then(customers =>
-                        customers.reduce((prev, customer) => {
-                            prev[customer.id] = customer; // eslint-disable-line no-param-reassign
-                            return prev;
-                        }, {})
-                    )
-                    .then(customers =>
-                        this.setState({ pendingReviewsCustomers: customers })
-                    );
+                // dataProvider(GET_LIST, 'data', {
+                //     filter: { status: 'pending' },
+                //     sort: { field: 'date', order: 'DESC' },
+                //     pagination: { page: 1, perPage: 100 },
+                // })
+                //     .then(response => response.data)
+                //     .then(reviews => {
+                //         const nbPendingReviews = reviews.reduce(nb => ++nb, 0);
+                //         const pendingReviews = reviews.slice(
+                //             0,
+                //             Math.min(10, reviews.length)
+                //         );
+                //         this.setState({ pendingReviews, nbPendingReviews });
+                //         return pendingReviews;
+                //     })
+                //     .then(reviews => reviews.map(review => review.customer_id))
+                //     .then(customerIds =>
+                //         dataProvider(GET_MANY, 'customers', {
+                //             ids: customerIds,
+                //         })
+                //     )
+                //     .then(response => response.data)
+                //     .then(customers =>
+                //         customers.reduce((prev, customer) => {
+                //             prev[customer.id] = customer; // eslint-disable-line no-param-reassign
+                //             return prev;
+                //         }, {})
+                //     )
+                //     .then(customers =>
+                //         this.setState({ pendingReviewsCustomers: customers })
+                //     );
 
-                dataProvider(GET_LIST, 'data', {
-                    filter: {
-                        has_ordered: true,
-                        first_seen_gte: aMonthAgo.toISOString(),
-                    },
-                    sort: { field: 'first_seen', order: 'DESC' },
-                    pagination: { page: 1, perPage: 100 },
-                })
-                    .then(response => response.data)
-                    .then(newCustomers => {
-                        this.setState({ newCustomers });
-                        this.setState({
-                            nbNewCustomers: newCustomers.reduce(nb => ++nb, 0),
-                        });
-                    });
+                // dataProvider(GET_LIST, 'data', {
+                //     filter: {
+                //         has_ordered: true,
+                //         first_seen_gte: aMonthAgo.toISOString(),
+                //     },
+                //     sort: { field: 'first_seen', order: 'DESC' },
+                //     pagination: { page: 1, perPage: 100 },
+                // })
+                //     .then(response => response.data)
+                //     .then(newCustomers => {
+                //         this.setState({ newCustomers });
+                //         this.setState({
+                //             nbNewCustomers: newCustomers.reduce(nb => ++nb, 0),
+                //         });
+                //     });
             }
         );
     }
