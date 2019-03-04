@@ -4,7 +4,7 @@ import InsertChart from '@material-ui/icons/InsertChart';
 const prod = process.env.NODE_ENV === 'production';
 const conf_prod = {
 	host: 'http://jsonplaceholder.typicode.com',
-	title: 'React Admin Demo Production',
+	title: '',
 	menus: [
 		{
 			name: 'reports',
@@ -34,7 +34,7 @@ const conf_prod = {
 
 const conf_dev = {
 	host: 'http://localhost:3007',
-	title: 'React Admin Demo Development',
+	title: '',
 	menus: [
 		{
 			name: 'reports',

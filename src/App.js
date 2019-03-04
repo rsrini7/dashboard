@@ -11,6 +11,8 @@ import { Dashboard } from './dashboard';
 import customRoutes from './routes';
 import englishMessages from './i18n/en';
 
+import { LineReport, BarReport, PieReport } from './reports';
+
 import data from './data';
 
 // import jsonServerProvider from 'ra-data-json-server';
@@ -73,6 +75,9 @@ class App extends Component {
                 i18nProvider={i18nProvider}
             >
                 <Resource name="data" {...data} />
+                <Resource name="linereport" list={LineReport} />
+			    <Resource name="barreport" list={BarReport} />
+				<Resource name="piereport" list={PieReport} />
             </Admin>
         );
     }

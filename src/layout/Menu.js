@@ -11,7 +11,14 @@ import {
     Responsive,
 } from 'react-admin';
 
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import { ListItem, ListItemIcon, ListItemText, Collapse } from '@material-ui/core';
+
 import data from '../data';
+
+import config from '../config';
+const { menus } = config;
 
 class Menu extends Component {
     state = {
@@ -29,6 +36,10 @@ class Menu extends Component {
         this.setState(state => ({ [menu]: !state[menu] }));
     };
 
+    handleMenuClick = menuName => {
+		this.setState({ [menuName]: !this.state[menuName] });
+    };
+    
     render() {
         const { onMenuClick, open, logout, translate } = this.props;
         return (
@@ -44,6 +55,44 @@ class Menu extends Component {
                     leftIcon={<data.icon />}
                     onClick={onMenuClick}
                 />
+                {menus.map(menu => {
+					if (menu.subMenus && menu.subMenus.length > 0) {
+							return (
+								<div key={menu.name}>
+									<ListItem
+										button
+										onClick={() => this.handleMenuClick(menu.name)}
+										style={{ paddingLeft: 16 }}
+									>
+										<ListItemIcon>{menu.icon}</ListItemIcon>
+										<ListItemText
+											inset
+											primary={menu.options.label}
+											style={{ paddingLeft: 5 }}
+										/>
+										{this.state[menu.name] ? <ExpandLess /> : <ExpandMore />}
+									</ListItem>
+									<Collapse
+										in={this.state[menu.name]}
+										timeout="auto"
+										unmountOnExit
+									>
+										{menu.subMenus.map(subMenu => {
+                                            return (
+                                                <MenuItemLink
+                                                    key={subMenu.name}
+                                                    to={`/${subMenu.name}`}
+                                                    primaryText={subMenu.options.label}
+                                                    onClick={onMenuClick}
+                                                    style={{ paddingLeft: 63 }}
+                                                />
+                                            );
+										})}
+									</Collapse>
+								</div>
+							);
+    					}
+				})}
                 <Responsive
                     xsmall={
                         <MenuItemLink

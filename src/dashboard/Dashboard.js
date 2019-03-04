@@ -9,6 +9,8 @@ import FailedTransfers from './FailedTransfers';
 
 import dataProviderFactory from '../dataProvider';
 
+import {PieReport} from '../reports/PieReport'
+
 const styles = {
     flex: { display: 'flex' },
     flexColumn: { display: 'flex', flexDirection: 'column' },
@@ -135,6 +137,9 @@ class Dashboard extends Component {
                                     nb={nbFailed}
                                     transfers={failedTransfers}
                                 />
+                            </div>
+                            <div style={styles.singleCol}>
+                                <PieReport />
                             </div>
                         </div>
                     </div>
