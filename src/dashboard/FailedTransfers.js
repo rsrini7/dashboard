@@ -8,16 +8,28 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { translate } from 'react-admin';
+import Avatar from '@material-ui/core/Avatar';
+import red from '@material-ui/core/colors/red';
 
 const style = theme => ({
     root: {
         flex: 1,
     },
+    avatar: {
+        backgroundColor: red[500],
+    },
 });
 
 const FailedTransfers = ({ transfers = [], translate, classes }) => (
     <Card className={classes.root}>
-        <CardHeader title={translate('pos.dashboard.failed_transfers')} />
+        <CardHeader 
+         avatar={
+            <Avatar aria-label="Recipe" className={classes.avatar}>
+              F
+            </Avatar>
+          }
+        title={translate('pos.dashboard.failed_transfers')} 
+        />
         <List dense={true}>
             {transfers.map(record => (
                 <ListItem
