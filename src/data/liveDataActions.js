@@ -1,15 +1,15 @@
 import { UPDATE } from 'react-admin';
 
-export const REVIEW_APPROVE = 'REVIEW_APPROVE';
-export const REVIEW_APPROVE_LOADING = 'REVIEW_APPROVE_LOADING';
-export const REVIEW_APPROVE_FAILURE = 'REVIEW_APPROVE_FAILURE';
-export const REVIEW_APPROVE_SUCCESS = 'REVIEW_APPROVE_SUCCESS';
+export const LIVE_DATA_APPROVE = 'LIVE_DATA_APPROVE';
+export const LIVE_DATA_APPROVE_LOADING = 'LIVE_DATA_APPROVE_LOADING';
+export const LIVE_DATA_APPROVE_FAILURE = 'LIVE_DATA_APPROVE_FAILURE';
+export const LIVE_DATA_APPROVE_SUCCESS = 'LIVE_DATA_APPROVE_SUCCESS';
 
 export const reviewApprove = (id, data, basePath) => ({
-    type: REVIEW_APPROVE,
-    payload: { id, data: { ...data, status: 'accepted' }, basePath },
+    type: LIVE_DATA_APPROVE,
+    payload: { id, data: { ...data, status: 'inprogress' }, basePath },
     meta: {
-        resource: 'reviews',
+        resource: 'data',
         fetch: UPDATE,
         onSuccess: {
             notification: {
@@ -28,16 +28,17 @@ export const reviewApprove = (id, data, basePath) => ({
     },
 });
 
-export const REVIEW_REJECT = 'REVIEW_REJECT';
-export const REVIEW_REJECT_LOADING = 'REVIEW_REJECT_LOADING';
-export const REVIEW_REJECT_FAILURE = 'REVIEW_REJECT_FAILURE';
-export const REVIEW_REJECT_SUCCESS = 'REVIEW_REJECT_SUCCESS';
+export const REVIEW_REJECT = 'LIVE_DATA_REJECT';
+export const LIVE_DATA_REJECT = 'LIVE_DATA_REJECT';
+export const LIVE_DATA_REJECT_LOADING = 'LIVE_DATA_REJECT_LOADING';
+export const LIVE_DATA_REJECT_FAILURE = 'LIVE_DATA_REJECT_FAILURE';
+export const LIVE_DATA_REJECT_SUCCESS = 'LIVE_DATA_REJECT_SUCCESS';
 
 export const reviewReject = (id, data, basePath) => ({
     type: REVIEW_REJECT,
     payload: { id, data: { ...data, status: 'rejected' }, basePath },
     meta: {
-        resource: 'reviews',
+        resource: 'data',
         fetch: UPDATE,
         onSuccess: {
             notification: {

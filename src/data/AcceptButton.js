@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import { translate } from 'react-admin';
 import compose from 'recompose/compose';
-import { reviewApprove as reviewApproveAction } from './reviewActions';
+import { reviewApprove as reviewApproveAction } from './liveDataActions';
 
 class AcceptButton extends Component {
     handleApprove = () => {
@@ -16,7 +16,7 @@ class AcceptButton extends Component {
 
     render() {
         const { record, translate } = this.props;
-        return record && record.status === 'pending' ? (
+        return record && record.status === 'failed' ? (
             <Button
                 variant="outlined"
                 color="primary"

@@ -18,7 +18,7 @@ const listStyles = {
     },
 };
 
-const ReviewListDesktop = ({ classes, ...props }) => (
+const LiveDataListDesktop = ({ classes, ...props }) => (
     <CustomizableDataGrid
         defaultColumns={['theme', 'category','filename']}
         rowClick="edit"
@@ -37,4 +37,4 @@ const ReviewListDesktop = ({ classes, ...props }) => (
     </CustomizableDataGrid>
 );
 
-export default withStyles(listStyles)(ReviewListDesktop);
+export default withStyles(listStyles)(LiveDataListDesktop);

@@ -13,7 +13,7 @@ const filterStyles = {
     status: { width: 150 },
 };
 
-const ReviewFilter = ({ classes, ...props }) => (
+const LiveDataFilter = ({ classes, ...props }) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
         <SelectInput
@@ -40,4 +40,4 @@ const ReviewFilter = ({ classes, ...props }) => (
     </Filter>
 );
 
-export default withStyles(filterStyles)(ReviewFilter);
+export default withStyles(filterStyles)(LiveDataFilter);

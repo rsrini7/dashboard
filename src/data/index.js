@@ -1,7 +1,7 @@
-import ReviewIcon from '@material-ui/icons/GridOn';
-import ReviewList from './ReviewList';
+import GridOnIcon from '@material-ui/icons/GridOn';
+import LiveDataList from './LiveDataList';
 
 export default {
-    icon: ReviewIcon,
-    list: ReviewList,
+    icon: GridOnIcon,
+    list: LiveDataList,
 };

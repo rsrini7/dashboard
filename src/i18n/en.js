@@ -118,7 +118,7 @@ export default {
         },
         reviews: {
             name: 'Review |||| Live Data',
-            detail: 'Review detail',
+            detail: 'Live Data Detail',
             fields: {
                 customer_id: 'Customer',
                 command_id: 'Order',

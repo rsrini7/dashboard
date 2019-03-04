@@ -92,7 +92,7 @@ class ChartComponent extends Component {
 		 ).then(response => {
 				let data = {};
 
-				console.log(response);
+				//console.log(response);
 
 				switch (this.props.type) {
 					case 'line':

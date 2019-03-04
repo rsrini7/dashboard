@@ -7,10 +7,10 @@ import Drawer from '@material-ui/core/Drawer';
 
 import BulkAcceptButton from './BulkAcceptButton';
 import BulkRejectButton from './BulkRejectButton';
-import ReviewListMobile from './ReviewListMobile';
-import ReviewListDesktop from './ReviewListDesktop';
-import ReviewFilter from './ReviewFilter';
-import ReviewEdit from './ReviewEdit';
+import LiveDataListMobile from './LiveDataListMobile';
+import LiveDataListDesktop from './LiveDataListDesktop';
+import LiveDataFilter from './LiveDataFilter';
+import LiveDataEdit from './LiveDataEdit';
 
 const ReviewsBulkActionButtons = props => (
     <Fragment>
@@ -28,13 +28,13 @@ class ReviewList extends Component {
                 <List
                     {...props}
                     bulkActionButtons={<ReviewsBulkActionButtons />}
-                    filters={<ReviewFilter />}
+                    filters={<LiveDataFilter />}
                     perPage={25}
                     sort={{ field: 'date', order: 'DESC' }}
                 >
                     <Responsive
-                        xsmall={<ReviewListMobile />}
-                        medium={<ReviewListDesktop />}
+                        xsmall={<LiveDataListMobile />}
+                        medium={<LiveDataListDesktop />}
                     />
                 </List>
                 <Route path="/data/:id">
@@ -52,7 +52,7 @@ class ReviewList extends Component {
                             >
                                 {/* To avoid any errors if the route does not match, we don't render at all the component in this case */}
                                 {isMatch ? (
-                                    <ReviewEdit
+                                    <LiveDataEdit
                                         id={match.params.id}
                                         onCancel={this.handleClose}
                                         {...props}

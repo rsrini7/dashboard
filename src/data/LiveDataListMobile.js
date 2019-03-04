@@ -28,7 +28,7 @@ const styles = {
     },
 };
 
-const ReviewMobileList = ({
+const LiveDataMobileList = ({
     basePath,
     classes = {},
     className,
@@ -102,7 +102,7 @@ const ReviewMobileList = ({
         </List>
     );
 
-ReviewMobileList.propTypes = {
+LiveDataMobileList.propTypes = {
     basePath: PropTypes.string,
     classes: PropTypes.object,
     className: PropTypes.string,
@@ -122,10 +122,10 @@ ReviewMobileList.propTypes = {
     tertiaryText: PropTypes.func,
 };
 
-ReviewMobileList.defaultProps = {
+LiveDataMobileList.defaultProps = {
     linkType: 'edit',
     hasBulkActions: false,
     selectedIds: [],
 };
 
-export default withStyles(styles)(ReviewMobileList);
+export default withStyles(styles)(LiveDataMobileList);

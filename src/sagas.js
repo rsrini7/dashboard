@@ -1,3 +1,3 @@
-import reviewSaga from './data/reviewSaga';
+import liveDataSaga from './data/liveDataSaga';
 
-export default [reviewSaga];
+export default [liveDataSaga];

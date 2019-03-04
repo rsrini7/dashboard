@@ -11,7 +11,7 @@ class BulkAcceptButton extends Component {
             crudUpdateMany(
                 resource,
                 selectedIds,
-                { status: 'accepted' },
+                { status: 'inprogress' },
                 basePath
             )
         );

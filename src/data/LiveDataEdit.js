@@ -1,19 +1,15 @@
 import React from 'react';
 import {
     EditController,
-    LongTextInput,
+    TextField,
     SimpleForm,
-    DateField,
 } from 'react-admin';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import CloseIcon from '@material-ui/icons/Close';
 
-// import ProductReferenceField from '../products/ProductReferenceField';
-// import CustomerReferenceField from '../visitors/CustomerReferenceField';
-import StarRatingField from './StarRatingField';
-import ReviewEditToolbar from './ReviewEditToolbar';
+import LiveDataEditToolbar from './LiveDataEditToolbar';
 
 const editStyle = theme => ({
     root: {
@@ -38,9 +34,15 @@ const editStyle = theme => ({
         display: 'inline-block',
         width: '50%',
     },
+    field: {
+        maxWidth: '18em',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+    },
 });
 
-const ReviewEdit = ({ classes, onCancel, ...props }) => (
+const LiveDataEdit = ({ classes, onCancel, ...props }) => (
     <EditController {...props}>
         {controllerProps =>
             controllerProps.record ? (
@@ -61,23 +63,19 @@ const ReviewEdit = ({ classes, onCancel, ...props }) => (
                         record={controllerProps.record}
                         save={controllerProps.save}
                         version={controllerProps.version}
-                        redirect="list"
-                        resource="reviews"
-                        toolbar={<ReviewEditToolbar />}
+                        redirect="data"
+                        resource="data"
+                        toolbar={<LiveDataEditToolbar />}
                     >
-                        {/* <CustomerReferenceField
-                            formClassName={classes.inlineField}
-                        />
-
-                        <ProductReferenceField
-                            formClassName={classes.inlineField}
-                        /> */}
-                        <DateField
-                            source="date"
-                            formClassName={classes.inlineField}
-                        />
-                        <StarRatingField formClassName={classes.inlineField} />
-                        <LongTextInput source="comment" rowsMax={15} />
+                        <TextField source="theme" cellClassName={classes.field} />
+                        <TextField source="category" cellClassName={classes.field} />
+                        <TextField source="filename" cellClassName={classes.field} />
+                        <TextField source="source" cellClassName={classes.field} />
+                        <TextField source="destination" cellClassName={classes.field} />
+                        <TextField source="initialtime" cellClassName={classes.field} />
+                        <TextField source="updatetime" cellClassName={classes.field} />
+                        <TextField source="status" cellClassName={classes.field} />                        
+                        <TextField source="remarks" cellClassName={classes.field} />
                     </SimpleForm>
                 </div>
             ) : null
@@ -85,4 +83,4 @@ const ReviewEdit = ({ classes, onCancel, ...props }) => (
     </EditController>
 );
 
-export default withStyles(editStyle)(ReviewEdit);
+export default withStyles(editStyle)(LiveDataEdit);
