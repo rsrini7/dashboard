@@ -12,7 +12,7 @@ import LiveDataListDesktop from './LiveDataListDesktop';
 import LiveDataFilter from './LiveDataFilter';
 import LiveDataEdit from './LiveDataEdit';
 
-const ReviewsBulkActionButtons = props => (
+const LiveDataBulkActionButtons = props => (
     <Fragment>
         <BulkAcceptButton {...props} />
         <BulkRejectButton {...props} />
@@ -20,14 +20,14 @@ const ReviewsBulkActionButtons = props => (
     </Fragment>
 );
 
-class ReviewList extends Component {
+class LiveDataList extends Component {
     render() {
         const props = this.props;
         return (
             <Fragment>
                 <List
                     {...props}
-                    bulkActionButtons={<ReviewsBulkActionButtons />}
+                    bulkActionButtons={<LiveDataBulkActionButtons />}
                     filters={<LiveDataFilter />}
                     perPage={25}
                     sort={{ field: 'date', order: 'DESC' }}
@@ -74,4 +74,4 @@ class ReviewList extends Component {
 export default connect(
     undefined,
     { push }
-)(ReviewList);
+)(LiveDataList);

@@ -6,12 +6,12 @@ import Button from '@material-ui/core/Button';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import { translate } from 'react-admin';
 import compose from 'recompose/compose';
-import { reviewApprove as reviewApproveAction } from './liveDataActions';
+import { liveDataApprove as liveDataApproveAction } from './liveDataActions';
 
 class AcceptButton extends Component {
     handleApprove = () => {
-        const { reviewApprove, record, comment } = this.props;
-        reviewApprove(record.id, { ...record, comment });
+        const { liveDataApprove, record, comment } = this.props;
+        liveDataApprove(record.id, { ...record, comment });
     };
 
     render() {
@@ -38,7 +38,7 @@ class AcceptButton extends Component {
 AcceptButton.propTypes = {
     record: PropTypes.object,
     comment: PropTypes.string,
-    reviewApprove: PropTypes.func,
+    liveDataApprove: PropTypes.func,
     translate: PropTypes.func,
 };
 
@@ -51,7 +51,7 @@ const enhance = compose(
             comment: selector(state, 'comment'),
         }),
         {
-            reviewApprove: reviewApproveAction,
+            liveDataApprove: liveDataApproveAction,
         }
     )
 );

@@ -134,9 +134,9 @@ export default {
                 reject: 'Reject',
             },
             notification: {
-                approved_success: 'Review approved',
+                approved_success: 'approved',
                 approved_error: 'Error: Review not approved',
-                rejected_success: 'Review rejected',
+                rejected_success: 'rejected',
                 rejected_error: 'Error: Review not rejected',
             },
         },
