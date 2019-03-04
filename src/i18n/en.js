@@ -12,15 +12,11 @@ export default {
             dark: 'Dark',
         },
         dashboard: {
-            monthly_revenue: 'Monthly Revenue',
             transfer_complete:'Completed',
             transfer_inprogress:'In-Progress',
             transfer_failed:'Failed',
             transfer_total:'Total',
-            new_orders: 'New Orders',
             pending_reviews: 'Pending Reviews',
-            new_customers: 'New Customers',
-            pending_orders: 'Pending Orders',
             pending_transfers: 'Pending Transfers',
             failed_transfers: 'Failed Transfers',
             transfer:{
@@ -28,17 +24,6 @@ export default {
                     'Theme: %{theme}, Category: %{category}, FileName: %{filename}',
                 second_line:
                     'Source: %{source}, Dest: %{destination}, Remarks: %{remarks}',
-            },
-            order: {
-                items:
-                    'by %{customer_name}, one item |||| by %{customer_name}, %{nb_items} items',
-            },
-            welcome: {
-                title: 'Welcome to react-admin demo',
-                subtitle:
-                    "This is the admin of an imaginary poster shop. Fell free to explore and modify the data - it's local to your computer, and will reset each time you reload.",
-                aor_button: 'react-admin site',
-                demo_button: 'Source for this demo',
             },
         },
         menu: {
@@ -132,7 +117,7 @@ export default {
             },
         },
         reviews: {
-            name: 'Review |||| Reviews',
+            name: 'Review |||| Live Data',
             detail: 'Review detail',
             fields: {
                 customer_id: 'Customer',

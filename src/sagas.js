@@ -1,3 +1,3 @@
-import reviewSaga from './reviews/reviewSaga';
+import reviewSaga from './data/reviewSaga';
 
 export default [reviewSaga];

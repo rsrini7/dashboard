@@ -11,7 +11,7 @@ import {
     Responsive,
 } from 'react-admin';
 
-import reviews from '../reviews';
+import data from '../data';
 
 class Menu extends Component {
     state = {
@@ -37,11 +37,11 @@ class Menu extends Component {
                 <DashboardMenuItem onClick={onMenuClick} />
       
                 <MenuItemLink
-                    to={`/reviews`}
+                    to={`/data`}
                     primaryText={translate(`resources.reviews.name`, {
                         smart_count: 2,
                     })}
-                    leftIcon={<reviews.icon />}
+                    leftIcon={<data.icon />}
                     onClick={onMenuClick}
                 />
                 <Responsive

@@ -19,13 +19,13 @@ const ReviewFilter = ({ classes, ...props }) => (
         <SelectInput
             source="status"
             choices={[
-                { id: 'accepted', name: 'Accepted' },
-                { id: 'pending', name: 'Pending' },
-                { id: 'rejected', name: 'Rejected' },
+                { id: 'completed', name: 'Completed' },
+                { id: 'inprogress', name: 'In-Progress' },
+                { id: 'failed', name: 'Failed' },
             ]}
             className={classes.status}
         />
-        <ReferenceInput source="customer_id" reference="customers">
+        {/* <ReferenceInput source="customer_id" reference="customers">
             <AutocompleteInput
                 optionText={choice =>
                     `${choice.first_name} ${choice.last_name}`
@@ -36,7 +36,7 @@ const ReviewFilter = ({ classes, ...props }) => (
             <AutocompleteInput optionText="reference" />
         </ReferenceInput>
         <DateInput source="date_gte" />
-        <DateInput source="date_lte" />
+        <DateInput source="date_lte" /> */}
     </Filter>
 );
 

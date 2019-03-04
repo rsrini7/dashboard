@@ -24,8 +24,9 @@ proxy.on('error', function (err, req, res) {
 });
 
 proxy.on('proxyRes', function(proxyRes, req, res) {
+  res.setHeader('X-Total-Count',100);
   res.setHeader('Content-Range','bytes : 0-9/*');
-  res.setHeader( 'Access-Control-Expose-Headers','Content-Range');
+  res.setHeader( 'Access-Control-Expose-Headers',['Content-Range','X-Total-Count']);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
 });

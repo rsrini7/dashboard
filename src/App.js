@@ -11,7 +11,7 @@ import { Dashboard } from './dashboard';
 import customRoutes from './routes';
 import englishMessages from './i18n/en';
 
-import reviews from './reviews';
+import data from './data';
 
 // import jsonServerProvider from 'ra-data-json-server';
 //import dataProviderFactory from './dataProvider';
@@ -72,7 +72,7 @@ class App extends Component {
                 locale="en"
                 i18nProvider={i18nProvider}
             >
-                <Resource name="reviews" {...reviews} />
+                <Resource name="data" {...data} />
             </Admin>
         );
     }

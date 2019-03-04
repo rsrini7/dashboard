@@ -37,7 +37,7 @@ class ReviewList extends Component {
                         medium={<ReviewListDesktop />}
                     />
                 </List>
-                <Route path="/reviews/:id">
+                <Route path="/data/:id">
                     {({ match }) => {
                         const isMatch =
                             match &&
@@ -67,7 +67,7 @@ class ReviewList extends Component {
     }
 
     handleClose = () => {
-        this.props.push('/reviews');
+        this.props.push('/data');
     };
 }
 

@@ -1,4 +1,4 @@
-import ReviewIcon from '@material-ui/icons/Comment';
+import ReviewIcon from '@material-ui/icons/GridOn';
 import ReviewList from './ReviewList';
 
 export default {

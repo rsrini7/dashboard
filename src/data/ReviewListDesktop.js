@@ -1,12 +1,8 @@
 import React from 'react';
-import { Datagrid, DateField, TextField } from 'react-admin';
+import { TextField } from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
-
-// import ProductReferenceField from '../products/ProductReferenceField';
-// import CustomerReferenceField from '../visitors/CustomerReferenceField';
-import StarRatingField from './StarRatingField';
-
 import rowStyle from './rowStyle';
+import CustomizableDataGrid from '../components/CustomizableDatagrid'
 
 const listStyles = {
     headerRow: {
@@ -23,19 +19,22 @@ const listStyles = {
 };
 
 const ReviewListDesktop = ({ classes, ...props }) => (
-    <Datagrid
+    <CustomizableDataGrid
+        defaultColumns={['theme', 'category','filename']}
         rowClick="edit"
         rowStyle={rowStyle}
         classes={{ headerRow: classes.headerRow }}
         {...props}
     >
-        <DateField source="date" />
-        {/* <CustomerReferenceField linkType={false} />
-        <ProductReferenceField linkType={false} /> */}
-        <StarRatingField />
-        <TextField source="comment" cellClassName={classes.comment} />
+        <TextField source="theme" cellClassName={classes.comment} />
+        <TextField source="category" />
+        <TextField source="filename" />
+        <TextField source="source" />
+        <TextField source="destination" />
+        <TextField source="initialtime" />
+        <TextField source="updatetime" />
         <TextField source="status" />
-    </Datagrid>
+    </CustomizableDataGrid>
 );
 
 export default withStyles(listStyles)(ReviewListDesktop);

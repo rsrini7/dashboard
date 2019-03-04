@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Layout, Sidebar } from 'react-admin';
 import AppBar from './AppBar';
-import { darkTheme, lightTheme } from './themes';
+import { darkTheme, lightTheme, myTheme } from './themes';
 
 const CustomSidebar = props => <Sidebar size={200} {...props} />;
 const CustomLayout = props => (
