@@ -8,6 +8,7 @@ import FailedTransfersMinimal from './FailedTransfersMinimal';
 import FailedTransfers from './FailedTransfers';
 
 import dataProviderFactory from '../dataProvider';
+import { customDataProvider } from '../dataCustomProvider';
 
 import {PieReport} from '../reports/PieReport'
 
@@ -26,7 +27,7 @@ class Dashboard extends Component {
         const aMonthAgo = new Date();
         aMonthAgo.setDate(aMonthAgo.getDate() - 30);
 
-        dataProviderFactory(process.env.REACT_APP_DATA_PROVIDER).then(
+        dataProviderFactory().then(
             dataProvider => {
                 dataProvider(GET_LIST, 'data', {
                     filter: { date_gte: aMonthAgo.toISOString() },

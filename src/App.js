@@ -16,8 +16,8 @@ import { LineReport, BarReport, PieReport } from './reports';
 import data from './data';
 
 // import jsonServerProvider from 'ra-data-json-server';
-//import dataProviderFactory from './dataProvider';
- import { customDataProvider } from './dataCustomProvider';
+import dataProviderFactory from './dataProvider';
+//  import { customDataProvider } from './dataCustomProvider';
 
 const i18nProvider = locale => {
     if (locale === 'fr') {
@@ -33,13 +33,11 @@ class App extends Component {
 
     async componentWillMount() {
 
-        const dataProvider = await customDataProvider;
+        // const dataProvider = await customDataProvider;
 
         //const dataProvider = jsonServerProvider('http://localhost:3007');
 
-        //  const dataProvider = await dataProviderFactory(
-        //      process.env.REACT_APP_DATA_PROVIDER
-        //  );
+          const dataProvider = await dataProviderFactory();
 
         this.setState({ dataProvider });
     }

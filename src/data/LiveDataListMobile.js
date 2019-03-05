@@ -13,8 +13,6 @@ import {
     TextField,
 } from 'react-admin';
 
-// import AvatarField from '../visitors/AvatarField';
-
 const styles = {
     root: {
         width: '100vw',
@@ -46,54 +44,14 @@ const LiveDataMobileList = ({
                     key={id}
                 >
                     <ListItem button>
-                        <ListItemAvatar>
-                            <ReferenceField
-                                record={data[id]}
-                                source="customer_id"
-                                reference="customers"
-                                basePath={basePath}
-                                linkType={false}
-                            >
-                                {/* <AvatarField size={40} /> */}
-                            </ReferenceField>
-                        </ListItemAvatar>
+                       
                         <ListItemText
                             primary={
                                 <Fragment>
-                                    <ReferenceField
-                                        record={data[id]}
-                                        source="customer_id"
-                                        reference="customers"
-                                        basePath={basePath}
-                                        linkType={false}
-                                    >
-                                        <FunctionField
-                                            render={record =>
-                                                `${record.first_name} ${
-                                                    record.last_name
-                                                }`
-                                            }
-                                            variant="subheading"
-                                            className={classes.inline}
-                                        />
-                                    </ReferenceField>{' '}
-                                    on{' '}
-                                    <ReferenceField
-                                        record={data[id]}
-                                        source="product_id"
-                                        reference="products"
-                                        basePath={basePath}
-                                        linkType={false}
-                                    >
-                                        <TextField
-                                            source="reference"
-                                            variant="subheading"
-                                            className={classes.inline}
-                                        />
-                                    </ReferenceField>
+                                    
                                 </Fragment>
                             }
-                            secondary={data[id].comment}
+                            secondary={data[id].status}
                             secondaryTypographyProps={{ noWrap: true }}
                         />
                     </ListItem>
