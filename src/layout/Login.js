@@ -20,7 +20,7 @@ import LockIcon from '@material-ui/icons/Lock';
 import { Notification, translate, userLogin } from 'react-admin';
 
 import { lightTheme } from './themes';
-
+// https://www.wealthmanagement.com/sites/wealthmanagement.com/files/styles/article_featured_standard/public/STATE%20STREET%20GA.jpg?itok=ztUKEDfz
 const styles = theme => ({
     main: {
         display: 'flex',
@@ -28,9 +28,9 @@ const styles = theme => ({
         minHeight: '100vh',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        background: 'url(https://source.unsplash.com/random/1600x900)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
+        background: 'url(https://www.lawandenvironment.com/wp-content/uploads/sites/5/2017/08/SSgA_450x240.png)',
+        backgroundRepeat: 'space',
+        backgroundSize: 'auto',
     },
     card: {
         minWidth: 300,

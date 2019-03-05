@@ -20,7 +20,7 @@ const listStyles = {
 
 const LiveDataListDesktop = ({ classes, ...props }) => (
     <CustomizableDataGrid
-        defaultColumns={['theme', 'category','filename']}
+        defaultColumns={['theme', 'category','filename','status']}
         rowClick="edit"
         rowStyle={rowStyle}
         classes={{ headerRow: classes.headerRow }}
