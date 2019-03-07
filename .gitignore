@@ -9,6 +9,8 @@ node_modules
 # production
 /build
 
+target
+
 # misc
 .DS_Store
 .env.local
