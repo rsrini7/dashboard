@@ -8,6 +8,7 @@ import {
     SelectInput,
 } from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { TimeInput, DateTimeInput } from 'react-admin-date-inputs';
 
 const filterStyles = {
     status: { width: 150 },
@@ -35,8 +36,8 @@ const LiveDataFilter = ({ classes, ...props }) => (
         <ReferenceInput source="product_id" reference="products">
             <AutocompleteInput optionText="reference" />
         </ReferenceInput>
-        <DateInput source="date_gte" />
-        <DateInput source="date_lte" /> */}
+        <DateInput source="date_gte" />*/}
+        <DateTimeInput source="date_lte" /> 
     </Filter>
 );
 
