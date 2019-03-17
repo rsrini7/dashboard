@@ -6,6 +6,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { translate } from "react-admin";
 
+import PropTypes from "prop-types";
+
 import CardIcon from "./CardIcon";
 
 const styles = {
@@ -35,6 +37,12 @@ const NbNewOrders = ({ value, translate, classes }) => (
     </Card>
   </div>
 );
+
+NbNewOrders.propTypes = {
+  value: PropTypes.object,
+  translate: PropTypes.func,
+  classes: PropTypes.func
+};
 
 const enhance = compose(
   withStyles(styles),

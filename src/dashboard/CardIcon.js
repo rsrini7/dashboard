@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
 import { withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 
 const styles = {
   card: {
@@ -23,5 +24,11 @@ const CardIcon = ({ Icon, classes, bgColor }) => (
     <Icon className={classes.icon} />
   </Card>
 );
+
+CardIcon.propTypes = {
+  classes: PropTypes.object,
+  Icon: PropTypes.func,
+  bgColor: PropTypes.func
+};
 
 export default withStyles(styles)(CardIcon);
