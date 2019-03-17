@@ -8,21 +8,19 @@ import config from "../../config";
 
 const { title } = config;
 
-const Layout = props => {
-  return (
-    <Fragment>
-      <Card>
-        <CardContent>
-          <Title title={title} />
-          <Typography variant="headline" component="h2">
-            {props.title}
-          </Typography>
-          {props.children}
-        </CardContent>
-      </Card>
-    </Fragment>
-  );
-};
+const Layout = props => (
+  <Fragment>
+    <Card>
+      <CardContent>
+        <Title title={title} />
+        <Typography variant="headline" component="h2">
+          {props.title}
+        </Typography>
+        {props.children}
+      </CardContent>
+    </Card>
+  </Fragment>
+);
 
 const RenderChart = props => {
   switch (props.type) {

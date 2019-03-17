@@ -40,7 +40,6 @@ const NbNewOrders = ({ value, translate, classes }) => (
 
 NbNewOrders.propTypes = {
   value: PropTypes.object,
-  translate: PropTypes.func,
   classes: PropTypes.func
 };
 

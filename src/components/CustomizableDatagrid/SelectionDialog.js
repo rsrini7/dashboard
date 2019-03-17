@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import T from "prop-types";
-
 import { FieldTitle } from "react-admin";
 
 import DialogTitle from "@material-ui/core/DialogTitle";

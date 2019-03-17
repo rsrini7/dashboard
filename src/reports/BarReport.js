@@ -3,6 +3,6 @@ import { Chart } from "../components/Chart";
 
 const options = {};
 
-export const BarReport = props => {
-  return <Chart title="Bar Chart" type="bar" options={options} />;
-};
+export const BarReport = props => (
+  <Chart title="Bar Chart" type="bar" options={options} />
+);

@@ -81,17 +81,15 @@ class Menu extends Component {
                   timeout="auto"
                   unmountOnExit
                 >
-                  {menu.subMenus.map(subMenu => {
-                    return (
-                      <MenuItemLink
-                        key={subMenu.name}
-                        to={`/${subMenu.name}`}
-                        primaryText={subMenu.options.label}
-                        onClick={onMenuClick}
-                        style={{ paddingLeft: 63 }}
-                      />
-                    );
-                  })}
+                  {menu.subMenus.map(subMenu => (
+                    <MenuItemLink
+                      key={subMenu.name}
+                      to={`/${subMenu.name}`}
+                      primaryText={subMenu.options.label}
+                      onClick={onMenuClick}
+                      style={{ paddingLeft: 63 }}
+                    />
+                  ))}
                 </Collapse>
               </div>
             );

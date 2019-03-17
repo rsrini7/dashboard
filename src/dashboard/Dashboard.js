@@ -36,20 +36,21 @@ class Dashboard extends Component {
         .then(response =>
           response.data.reduce(
             (stats, transferData) => {
-              stats.nbTotal++;
+              const statsLocal = stats;
+              statsLocal.nbTotal += 1;
 
               if (transferData.status === "success") {
-                stats.nbCompleted++;
+                statsLocal.nbCompleted += 1;
               }
               if (transferData.status === "inprogress") {
-                stats.nbInprogress++;
-                stats.pendingTransfers.push(transferData);
+                statsLocal.nbInprogress += 1;
+                statsLocal.pendingTransfers.push(transferData);
               }
               if (transferData.status.indexOf("failed") > -1) {
-                stats.nbFailed++;
-                stats.failedTransfers.push(transferData);
+                statsLocal.nbFailed += 1;
+                statsLocal.failedTransfers.push(transferData);
               }
-              return stats;
+              return statsLocal;
             },
             {
               nbTotal: 0,

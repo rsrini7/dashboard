@@ -11,6 +11,8 @@ import { translate } from "react-admin";
 import Avatar from "@material-ui/core/Avatar";
 import red from "@material-ui/core/colors/red";
 
+import PropTypes from "prop-types";
+
 const style = theme => ({
   flex: 1,
 
@@ -54,6 +56,11 @@ const FailedTransfers = ({ transfers = [], translate, classes }) => (
     </List>
   </Card>
 );
+
+FailedTransfers.propTypes = {
+  transfers: PropTypes.array,
+  classes: PropTypes.object
+};
 
 const enhance = compose(
   withStyles(style),

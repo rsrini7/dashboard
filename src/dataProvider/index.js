@@ -1,3 +1,1 @@
-export default type => {
-  return import("./rest").then(provider => provider.default);
-};
+export default type => import("./rest").then(provider => provider.default);

@@ -5,6 +5,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import { withStyles } from "@material-ui/core/styles";
 
 import Logo from "./Logo";
+import PropTypes from "prop-types";
 
 const styles = {
   title: {
@@ -18,7 +19,7 @@ const styles = {
   }
 };
 
-const CustomUserMenu = translate(({ translate, ...props }) => (
+const CustomUserMenu = translate(({ ...props }) => (
   <UserMenu {...props}>
     <MenuItemLink
       to="/configuration"
@@ -40,5 +41,9 @@ const CustomAppBar = ({ classes, ...props }) => (
     <span className={classes.spacer} />
   </AppBar>
 );
+
+CustomAppBar.propTypes = {
+  classes: PropTypes.object
+};
 
 export default withStyles(styles)(CustomAppBar);

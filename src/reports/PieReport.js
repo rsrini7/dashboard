@@ -3,6 +3,6 @@ import { Chart } from "../components/Chart";
 
 const options = {};
 
-export const PieReport = props => {
-  return <Chart title="Transfer Status" type="pie" options={options} />;
-};
+export const PieReport = props => (
+  <Chart title="Transfer Status" type="pie" options={options} />
+);
