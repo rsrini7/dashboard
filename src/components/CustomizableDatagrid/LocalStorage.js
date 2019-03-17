@@ -1,6 +1,6 @@
-import get from 'lodash/get';
+import get from "lodash/get";
 
-const STORAGE_KEY = 'raColumnsConfig';
+const STORAGE_KEY = "raColumnsConfig";
 
 // Very basic storage helper
 // values are stored in browser localStorage
@@ -27,9 +27,9 @@ const LocalStorage = {
     const oldValue = getRootValue();
     setRootValue({
       ...oldValue,
-      [key]: value,
+      [key]: value
     });
-  },
+  }
 };
 
 export default LocalStorage;

@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import T from 'prop-types';
+import React, { Component } from "react";
+import T from "prop-types";
 
-import { Datagrid } from 'react-admin';
+import { Datagrid } from "react-admin";
 
-import isEmpty from 'lodash/isEmpty';
-import filter from 'lodash/filter';
-import get from 'lodash/get';
+import isEmpty from "lodash/isEmpty";
+import filter from "lodash/filter";
+import get from "lodash/get";
 
-import ColumnIcon from '@material-ui/icons/ViewColumn';
-import Button from '@material-ui/core/Button';
+import ColumnIcon from "@material-ui/icons/ViewColumn";
+import Button from "@material-ui/core/Button";
 
-import SelectionDialog from './SelectionDialog';
-import LocalStorage from './LocalStorage';
+import SelectionDialog from "./SelectionDialog";
+import LocalStorage from "./LocalStorage";
 
 const arrayToSelection = values =>
   values.reduce((selection, columnName) => {
@@ -26,13 +26,15 @@ class CustomizableDatagrid extends Component {
     super(props);
     this.state = {
       modalOpened: false,
-      selection: this.getInitialSelection(),
+      selection: this.getInitialSelection()
     };
   }
 
   getColumnNames() {
     const { children } = this.props;
-    return filter(React.Children.map(children, field => get(field, ['props', 'source'])));
+    return filter(
+      React.Children.map(children, field => get(field, ["props", "source"]))
+    );
   }
 
   getColumnLabels() {
@@ -42,11 +44,11 @@ class CustomizableDatagrid extends Component {
         children,
         field =>
           field && {
-            source: get(field, ['props', 'source']),
-            label: get(field, ['props', 'label']),
-          },
+            source: get(field, ["props", "source"]),
+            label: get(field, ["props", "label"])
+          }
       ),
-      item => item && item.source,
+      item => item && item.source
     );
   }
 
@@ -78,7 +80,7 @@ class CustomizableDatagrid extends Component {
     const previousSelection = this.state.selection;
     const selection = {
       ...previousSelection,
-      [columnName]: !previousSelection[columnName],
+      [columnName]: !previousSelection[columnName]
     };
     this.setState({ selection }, this.updateStorage);
   };
@@ -87,7 +89,7 @@ class CustomizableDatagrid extends Component {
   handleClose = () => this.setState({ modalOpened: false });
 
   renderChild = child => {
-    const source = get(child, ['props', 'source']);
+    const source = get(child, ["props", "source"]);
     const { selection } = this.state;
 
     // Show children without source, or children explicitly visible
@@ -104,8 +106,13 @@ class CustomizableDatagrid extends Component {
 
     return (
       <div>
-        <div style={{ float: 'right', marginRight: '1rem' }}>
-          <Button variant="outlined" mini aria-label="add" onClick={this.handleOpen}>
+        <div style={{ float: "right", marginRight: "1rem" }}>
+          <Button
+            variant="outlined"
+            mini
+            aria-label="add"
+            onClick={this.handleOpen}
+          >
             <ColumnIcon />
           </Button>
         </div>
@@ -117,7 +124,9 @@ class CustomizableDatagrid extends Component {
             onClose={this.handleClose}
           />
         )}
-        <Datagrid {...rest}>{React.Children.map(children, this.renderChild)}</Datagrid>
+        <Datagrid {...rest}>
+          {React.Children.map(children, this.renderChild)}
+        </Datagrid>
       </div>
     );
   }
@@ -127,13 +136,13 @@ CustomizableDatagrid.propTypes = {
   defaultColumns: T.arrayOf(T.string),
   storage: T.shape({
     get: T.func.isRequired,
-    set: T.func.isRequired,
-  }),
+    set: T.func.isRequired
+  })
 };
 
 CustomizableDatagrid.defaultProps = {
   defaultColumns: [],
-  storage: LocalStorage,
+  storage: LocalStorage
 };
 
 export default CustomizableDatagrid;

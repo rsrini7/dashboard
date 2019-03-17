@@ -1,3 +1,3 @@
-export { LineReport } from './LineReport';
-export { BarReport } from './BarReport';
-export { PieReport } from './PieReport';
+export { LineReport } from "./LineReport";
+export { BarReport } from "./BarReport";
+export { PieReport } from "./PieReport";
