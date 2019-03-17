@@ -78,7 +78,7 @@
     "prettier/prettier": [
       "error",
       {
-        "trailingComma": "es5",
+        "trailingComma": "none",
         "singleQuote": false,
         "printWidth": 80
       }

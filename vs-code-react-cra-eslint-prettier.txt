@@ -1,0 +1,56 @@
+https://github.com/wesbos/eslint-config-wesbos/
+	-> airbnb, eslint, babel-eslint having issues with CRA
+	
+https://www.youtube.com/watch?v=bfyI9yl3qfE&t=1s (.. customized)
+
+npm i prettier eslint-config-prettier eslint-plugin-prettier -D
+
+.eslintrc
+
+{
+	"extends":["react-app","prettier"],
+	"rules": {
+		"prettier/prettier": "error"
+	},
+	"plugins": ["prettier"]
+
+}
+
+or 
+
+{
+	"extends": ["react-app", "plugin:prettier/recommended"]
+}
+
+vs code - user settings
+
+	"editor.formatOnSave" : true,
+	"[javascript]": {
+		"editor.formatOnSave" : false
+	},
+	"eslint.autoFixOnSave": true,
+	"eslint.alwaysShowStatus":true,
+	"prettier.disableLanguages" : [
+		"js"
+	],
+	"files.autoSave" : "onFocusChange",
+	
+git hooks:
+
+	npm i husky lint-staged  -D
+	
+	package.json
+		"scripts"{
+			"precommit" : "lint-staged"
+		},
+		"lint-staged": {
+			"src/**/*.{js,jsx,json,css}" : [
+				"prettier --write",
+				"git add"
+			]
+		}
+		
+		
+	npm i pretty-quick -D
+		remove "lint-staged" above
+		add "precommit" : "pretty-quick --staged"

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { formValueSelector } from "redux-form";
 import Button from "@material-ui/core/Button";
 import ThumbDown from "@material-ui/icons/ThumbDown";
-import { translate } from "react-admin";
+import { translate as raTranslate } from "react-admin";
 import compose from "recompose/compose";
 import { liveDataReject as liveDataRejectAction } from "./liveDataActions";
 
@@ -45,7 +45,7 @@ RejectButton.propTypes = {
 const selector = formValueSelector("record-form");
 
 const enhance = compose(
-  translate,
+  raTranslate,
   connect(
     state => ({
       comment: selector(state, "comment")
